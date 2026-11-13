@@ -7,7 +7,7 @@ function App() {
   const [productId, setProductId] = useState<number>(101);
   const [customerName, setCustomerName] = useState<string>('');
   const [comment, setComment] = useState<string>('');
-  
+
   const [feedbacks, setFeedbacks] = useState<FeedbackResponse[]>([]);
   const [summary, setSummary] = useState<SentimentSummary | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -62,11 +62,44 @@ function App() {
 
   return (
     <div style={{ maxWidth: '900px', margin: '40px auto', fontFamily: 'Arial, sans-serif', padding: '0 20px' }}>
-      <h2>Customer Feedback & AI Sentiment Dashboard</h2>
+      {/* Centered & Highlighted Header */}
+      <div style={{ textAlign: 'center', marginBottom: '35px' }}>
+        <span
+          style={{
+            display: 'inline-block',
+            backgroundColor: '#eff6ff',
+            color: '#2563eb',
+            fontSize: '12px',
+            fontWeight: 700,
+            padding: '4px 14px',
+            borderRadius: '20px',
+            letterSpacing: '0.5px',
+            textTransform: 'uppercase',
+            marginBottom: '10px',
+            border: '1px solid #bfdbfe',
+          }}
+        >
+          ✨ AI-Powered NLP Analytics
+        </span>
+        <h1
+          style={{
+            fontSize: '32px',
+            fontWeight: 800,
+            margin: '0 0 8px 0',
+            color: '#0f172a',
+            letterSpacing: '-0.5px',
+          }}
+        >
+          Customer Feedback & AI Sentiment Dashboard
+        </h1>
+        <p style={{ margin: 0, color: '#64748b', fontSize: '15px' }}>
+          Real-time customer review intelligence and sentiment classification
+        </p>
+      </div>
 
       <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
         {/* Submission Form */}
-        <div style={{ flex: 1, padding: '20px', border: '1px solid #ddd', borderRadius: '8px', background: '#ffffff' }}>
+        <div className="card" style={{ flex: 1 }}>
           <h3 style={{ marginTop: 0 }}>Submit Feedback</h3>
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '10px' }}>
@@ -111,7 +144,7 @@ function App() {
         </div>
 
         {/* Analytics Summary */}
-        <div style={{ flex: 1, padding: '20px', border: '1px solid #ddd', borderRadius: '8px', background: '#fcfcfc' }}>
+        <div className="card" style={{ flex: 1 }}>
           <h3 style={{ marginTop: 0 }}>Sentiment Summary (Product {productId})</h3>
           {summary ? (
             <div>
@@ -152,8 +185,8 @@ function App() {
       </div>
 
       {/* Feedback Feed */}
-      <div>
-        <h3>Recent Feedbacks</h3>
+      <div className="card">
+        <h3 style={{ marginTop: 0 }}>Recent Feedbacks</h3>
         {feedbacks.length === 0 ? (
           <p>No feedback found for Product {productId}.</p>
         ) : (
